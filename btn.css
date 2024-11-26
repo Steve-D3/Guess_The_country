@@ -22,8 +22,9 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 300px;
+    width: 200px;
     will-change: transform;
+
   }
   
   .button-28:disabled {

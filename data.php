@@ -15,18 +15,10 @@ $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
 
 
 $data = getData();
-$randomIdx = get_random_index($data);
 // print '<pre>';
 // print_r($data);
 // echo get_random_index($data);
 // print '</pre>';
-
-
-function get_random_index(array $data)
-{
-    $length = count($data);
-    return random_int(0, $length - 1);
-}
 
 function getData(): array
 {
