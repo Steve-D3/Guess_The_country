@@ -21,19 +21,6 @@ $randomIdx = get_random_index($data);
 // echo get_random_index($data);
 // print '</pre>';
 
-print '<pre>';
-print_r($_POST);
-print '</pre>';
-if (isset($_POST['btn'])) {
-    // Getting the value of button
-    // in $btnValue variable
-    $btnValue = $_POST['btn'];
-
-    // Sending Response
-    echo "Success";
-}
-
-
 
 function get_random_index(array $data)
 {
