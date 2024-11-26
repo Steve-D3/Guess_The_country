@@ -12,9 +12,9 @@ if (isset($_POST["btn"])) {
 }
 
 
-print '<pre>';
-print_r($_POST);
-print '</pre>';
+// print '<pre>';
+// print_r($_POST);
+// print '</pre>';
 
 ?>
 
@@ -46,7 +46,7 @@ print '</pre>';
         section {
             &:first-child {
                 h2 {
-                    margin-bottom: 2rem;
+                    margin: 2rem 0;
                 }
                 text-align: center;
 
