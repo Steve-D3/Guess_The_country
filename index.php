@@ -1,6 +1,6 @@
 <?php
 
-
+include "data.php";
 
 ?>
 
@@ -26,7 +26,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 10rem;
             align-items: center;
-            background-color
+            background-color: #f0f0f0;
         }
     </style>
 </head>
