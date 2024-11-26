@@ -2,6 +2,15 @@
 
 include "data.php";
 
+$randomIdx = array_rand($data);
+
+if ($_POST["btn"] == $data[$randomIdx]["name"]){
+    echo "correct ----- ";
+}
+else {
+    echo "wrong";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -10,48 +19,54 @@ include "data.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guess the country</title>
+    <link rel="stylesheet" href="btn.css">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        h1 {
-            text-align: center;
-
-        }
-
-        section {
+        main {
+            font-family: monospace;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10rem;
-            align-items: center;
-            background-color: #f0f0f0;
+            background-color: #F2EBE3;
+
+            width: 80wh;
+            height: 80vh;
+        }
+        section {
+            &:nth-child(1){
+                text-align: center;
+
+            }
+
+            &:last-child{
+                display: grid;
+                text-align: center;
+
+            
+            }
+        }
+        img {
+            height: 500px;
+            width: 500px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Guess the country !!</h1>
-    <section>
+    <main>
+        <section>
+        <h2>Guess the Country</h2>
+            <img src="<? echo $data[$randomIdx]["url"]; ?>" alt="">
+        </section>
 
-            <label for="photo">Country to guess >(°-°)/:</label> <br>
-            
-            <img src= "<? $randomIndex = mt_rand(0, count($data- 1)); ?>" >
-
-    </section>
-
-    <section>
-        <form action="index.php" methode="post">
-            <a> <button type="button"> Peru </button></a> <br>
-            <a> <button type="button"> Afghanistan </button></a> <br>
-            <a> <button type="button"> India </button></a> <br>
-            <a> <type="submit" name="submit" class="btn btn-primary"> Mongolia </button></a> <br>
-
-         </form>
-    </section>
-
-
+        <h2>Index ---> <? echo $randomIdx ?></h2>
+        <section>
+            <form method="post">
+                <button type="submit" name="btn" value="Peru" class="button-28">Peru</button>
+                <button type="submit" name="btn" value="Mongolia" class="button-28">Mongolia</button>
+                <button type="submit" name="btn" value="Afghanistan" class="button-28">Afghanistan</button>
+                <button type="submit" name="btn" value="India" class="button-28">India</button>
+            </form>
+        </section>
+    </main>
 
 </body>
 
