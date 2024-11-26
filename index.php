@@ -2,6 +2,12 @@
 
 include "data.php";
 
+if(isset($_POST["button"])){
+    echo "success";
+} else {
+    echo "error";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -37,17 +43,16 @@ include "data.php";
 
             <label for="photo">Country to guess >(°-°)/:</label> <br>
             
-            <img src= "<? $randomIndex = mt_rand(0, count($data- 1)); ?>" >
+            <img src= "<?php $randomIndex = mt_rand(0, count($data) - 1); echo $data[$randomIndex]['image']; ?>" >
 
     </section>
 
     <section>
-        <form action="index.php" methode="post">
-            <a> <button type="button"> Peru </button></a> <br>
-            <a> <button type="button"> Afghanistan </button></a> <br>
-            <a> <button type="button"> India </button></a> <br>
-            <a> <type="submit" name="submit" class="btn btn-primary"> Mongolia </button></a> <br>
-
+        <form action="index.php" method="post">
+            <button type="submit" name="submit" value="Peru" class="btn btn-primary">Peru</button> <br>
+            <button type="submit" name="submit" value="Afghanistan" class="btn btn-primary">Afghanistan</button> <br>
+            <button type="submit" name="submit" value="India" class="btn btn-primary">India</button> <br>
+            <button type="submit" name="submit" value="Mongolia" class="btn btn-primary">Mongolia</button> <br>
          </form>
     </section>
 
