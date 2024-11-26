@@ -33,20 +33,24 @@ include "data.php";
 
 <body>
     <h1>Guess the country !!</h1>
+    <section>
+
+            <label for="photo">Country to guess >(°-°)/:</label> <br>
+            
+            <img src= "<? $randomIndex = mt_rand(0, count($data- 1)); ?>" >
+
+    </section>
 
     <section>
         <form action="index.php" methode="post">
-            <label for="photo">Country to guess >(°-°)/:</label> <br>
-
-
             <a> <button type="button"> Peru </button></a> <br>
             <a> <button type="button"> Afghanistan </button></a> <br>
             <a> <button type="button"> India </button></a> <br>
-            <a> <button type="button"> Mongolia </button></a> <br>
+            <a> <type="submit" name="submit" class="btn btn-primary"> Mongolia </button></a> <br>
+
+         </form>
     </section>
 
-
-    </form>
 
 
 </body>
