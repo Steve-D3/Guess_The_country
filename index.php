@@ -1,15 +1,37 @@
 <?php
 include "data.php";
+session_start();
 
-$randomIdx = array_rand($data);
+if (!isset($_SESSION['randomIdx'])) {
+    $_SESSION['randomIdx'] = array_rand($data);
+}
+$randomIdx = $_SESSION['randomIdx'];
+
+if (!isset($_SESSION['score'])) {
+    $_SESSION['score'] = 0;
+}
+$score = $_SESSION['score'];
+
+
 
 if (isset($_POST["btn"])) {
     if ($_POST["btn"] == $data[$randomIdx]["name"]) {
         echo "correct";
+        $_SESSION['score'] += 1;
     } else {
         echo "wrong";
+        $_SESSION['score'] -= 1;
     }
+    $score = $_SESSION['score'];
+    $previousIdx = $randomIdx;
+    do {
+        $_SESSION['randomIdx'] = array_rand($data);
+    } while ($_SESSION['randomIdx'] === $previousIdx);
+
+    $randomIdx = $_SESSION['randomIdx'];
 }
+
+
 
 
 // print '<pre>';
@@ -31,6 +53,7 @@ if (isset($_POST["btn"])) {
             box-sizing: border-box;
             margin: 0;
         }
+
         main {
             font-family: monospace;
             display: grid;
@@ -39,8 +62,8 @@ if (isset($_POST["btn"])) {
             margin: auto auto;
             width: 80vh;
             height: 80vh;
-
-            text-align: center;
+            place-self: center;
+            text-align: center
         }
 
         section {
@@ -48,6 +71,7 @@ if (isset($_POST["btn"])) {
                 h2 {
                     margin: 2rem 0;
                 }
+
                 text-align: center;
 
             }
@@ -76,11 +100,11 @@ if (isset($_POST["btn"])) {
             <img src="<? echo $data[$randomIdx]["url"]; ?>" alt="">
         </section>
 
-        <h2>Info: </h2>
-        <pre>
+        <h2>Score: <? echo $score; ?></h2>
+        <!-- <pre>
             <? echo $data[$randomIdx]["id"] . "\n" ?>
             <? echo $data[$randomIdx]["name"] ?>
-        </pre>
+        </pre> -->
         <section>
             <form method="post">
                 <button type="submit" name="btn" value="Peru" class="button-28">Peru</button>
