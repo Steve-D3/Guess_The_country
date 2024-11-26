@@ -15,16 +15,30 @@ $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
 
 
 $data = getData();
+$randomIdx = get_random_index($data);
+// print '<pre>';
+// print_r($data);
+// echo get_random_index($data);
+// print '</pre>';
+
 print '<pre>';
-print_r($data);
-echo get_random_index($data);
+print_r($_POST);
 print '</pre>';
+if (isset($_POST['btn'])) {
+    // Getting the value of button
+    // in $btnValue variable
+    $btnValue = $_POST['btn'];
+
+    // Sending Response
+    echo "Success";
+}
 
 
 
-function get_random_index(array $data){
+function get_random_index(array $data)
+{
     $length = count($data);
-    return random_int(0, $length-1);
+    return random_int(0, $length - 1);
 }
 
 function getData(): array
@@ -40,32 +54,3 @@ function getData(): array
 
 
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the country</title>
-    <style>
-        img {
-            height: 500px;
-            width: 500px;
-        }
-
-    </style>
-</head>
-
-<body>
-
-    <section>
-        <img src="<?echo $data[get_random_index($data)]["url"];?>" alt="">
-    </section>
-
-    <h2>test</h2>
-
-</body>
-
-</html>

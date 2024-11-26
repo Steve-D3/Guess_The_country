@@ -10,52 +10,28 @@ include "data.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guess the country</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        h1 {
-            text-align: center;
-
-        }
-
-        section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10rem;
-            align-items: center;
-            background-color: #f0f0f0;
+        img {
+            height: 500px;
+            width: 500px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Guess the country !!</h1>
 
     <section>
-        
-    </section>
-    <section>
-
-        <a> <button type="button"> Peru </button></a> <br>
-        <a> <button type="button"> Afghanistan </button></a> <br>
-        <a> <button type="button"> India </button></a> <br>
-        <a> <button type="button"> Mongolia </button></a> <br>
+        <img src="<? echo $data[$randomIdx]["url"]; ?>" alt="">
     </section>
 
-    <section>
-        <form action="index.php" methode="post">
-            <label for="photo">Country to guess >(°-°)/:</label> <br>
-
-
-
-    </section>
-
-
+    <h2>Index ---> <?echo $randomIdx?></h2>
+    <form method="post">
+        <button type="submit" name="btn" value="Peru">Peru</button>
+        <button type="submit" name="btn" value="Mongolia">Mongolia</button>
+        <button type="submit" name="btn" value="Afghanistan">Afghanistan</button>
+        <button type="submit" name="btn" value="India">India</button>
     </form>
-
 
 </body>
 
