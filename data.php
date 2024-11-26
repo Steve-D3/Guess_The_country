@@ -17,17 +17,22 @@ $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
 $data = getData();
 print '<pre>';
 print_r($data);
-echo $data[0]["url"];
+echo get_random_index($data);
 print '</pre>';
 
 
 
-
+function get_random_index(array $data){
+    $length = count($data);
+    return random_int(0, $length-1);
+}
 
 function getData(): array
 {
     global $db;
-    $sql = "SELECT * FROM photos WHERE country_id = 4";
+    $sql = "SELECT photos.id, photos.url, country.name FROM photos
+    LEFT JOIN country
+    on photos.country_id = country.id";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -43,18 +48,22 @@ function getData(): array
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guess the country</title>
+    <style>
+        img {
+            height: 500px;
+            width: 500px;
+        }
+
+    </style>
 </head>
 
 <body>
 
+    <section>
+        <img src="<?echo $data[get_random_index($data)]["url"];?>" alt="">
+    </section>
 
-    <ul>
-        <? foreach ($data as $country): ?>
-            <li><img src="<?echo $country["url"]; ?>" alt=""></li>
-            <p><?echo $country["id"]; ?></p>
-        <? endforeach; ?>
-    </ul>
     <h2>test</h2>
 
 </body>
